@@ -23,7 +23,7 @@ Designed for interoperability and flexibility, GraphBridge helps users bridge st
 Clone the repo:
 
 ```bash
-git clone https://github.com/your-username/KGX.git
+git clone https://github.com/andrelcalves/KGX.git
 cd KGX
 pip install -r requirements.txt
 ```
