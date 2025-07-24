@@ -1,7 +1,7 @@
 # KGX
 Knowledge Graph eXchange is an open-source toolkit to convert and translate knowledge graphs between different platforms and formats.
 
-Designed for interoperability and flexibility, GraphBridge helps users bridge structured graph models from systems like Cognite Data Fusion (CDF), Neo4j, Azure Digital Twins, RDF stores, and more.
+Designed for interoperability and flexibility, Knowledge Graph eXchange  helps users bridge structured graph models from systems like Cognite Data Fusion (CDF), Neo4j, Azure Digital Twins, RDF stores, and more.
 
 ## 🚀 Features
 
