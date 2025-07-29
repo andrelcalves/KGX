@@ -1,0 +1,5 @@
+cognite:
+  project: your-cognite-project
+  client_id: your-client-id
+  client_secret: your-client-secret
+  token_url: https://YOUR_IDP/oauth2/v1/token
