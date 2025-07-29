@@ -1,0 +1,3 @@
+cognite-sdk==6.*
+cognite-neat==1.*
+PyYAML
