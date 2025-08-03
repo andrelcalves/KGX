@@ -1,6 +1,6 @@
-from cognite.neat.graph.extractors.data_model_extractor import DataModelExtractor
+from cognite.neat import NeatSession
 from cognite.client import CogniteClient
-from cognite.client.credentials import OAuthClientCredentials
+from cognite.client.credentials import CredentialProvider, Token
 from cognite.client.config import ClientConfig
 from typing import Dict
 
@@ -8,30 +8,32 @@ from typing import Dict
 class CogniteDataModelExporter:
     def __init__(self, config: Dict):
         self.project = config["cognite"]["project"]
-        self.client_id = config["cognite"]["client_id"]
-        self.client_secret = config["cognite"]["client_secret"]
-        self.token_url = config["cognite"]["token_url"]
+        self.client_name = config["cognite"]["client_name"]
+        self.auth_token_override = config["cognite"]["auth_token_override"]
+        self.base_uri = config["cognite"]["base_uri"]
 
         self.client = self._init_cognite_client()
 
+    @staticmethod
+    def _create_credentials(self) -> CredentialProvider:
+        return Token(str(self.auth_token_override))
+        
     def _init_cognite_client(self) -> CogniteClient:
-        credentials = OAuthClientCredentials(
-            client_id=self.client_id,
-            client_secret=self.client_secret,
-            token_url=self.token_url,
-        )
+
         return CogniteClient(ClientConfig(
-            client_name="graphbridge-cognite",
+            client_name=self.client_name,
             project=self.project,
-            credentials=credentials
-        ))
+            credentials=self._create_credentials(self),
+            base_url=self.base_uri
+        )
+    )
 
     def export_data_model(self, space: str, model_id: str, version: str, output_path: str):
-        extractor = DataModelExtractor(cognite_client=self.client)
-        data_model_graph = extractor.extract_data_model_graph(
-            space=space,
-            external_id=model_id,
-            version=version,
+        neat =  NeatSession(self.client)
+        neat.read.cdf.data_model(
+            (space,
+            model_id,
+            version)
         )
-        data_model_graph.to_yaml_file(output_path)
+        neat.to.yaml(output_path)
         print(f"✅ Exported Cognite data model to {output_path}")

@@ -16,6 +16,14 @@ Designed for interoperability and flexibility, Knowledge Graph eXchange  helps u
 
 ---
 
+## 🧠 Example Output
+
+Here’s an example of a data model imported into Neo4j using **KGX**:
+
+![Knowledge Graph in Neo4j](assets/graph_neo4j.png)
+
+---
+
 ## 📦 Installation
 
 > Requires Python 3.8+
