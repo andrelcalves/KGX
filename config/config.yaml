@@ -1,5 +1,9 @@
 cognite:
   project: your-cognite-project
-  client_id: your-client-id
-  client_secret: your-client-secret
-  token_url: https://YOUR_IDP/oauth2/v1/token
+  client_name: your-client-name
+  base_uri: your-cognite_base_uri
+  auth_token_override: https://YOUR_IDP/oauth2/v1/token
+neo4j:
+  uri: neo4j+s://YOUR_INSTANCE.databases.neo4j.io
+  user: neo4j_user
+  password: YOUR_PASSWORD
