@@ -3,6 +3,7 @@ from cognite.client import CogniteClient
 from cognite.client.credentials import CredentialProvider, Token
 from cognite.client.config import ClientConfig
 from typing import Dict
+from utils.visualizer import generate_html_graph_preview_from_yaml
 
 
 class CogniteDataModelExporter:
@@ -37,3 +38,6 @@ class CogniteDataModelExporter:
         )
         neat.to.yaml(output_path)
         print(f"✅ Exported Cognite data model to {output_path}")
+        html_preview = generate_html_graph_preview_from_yaml(output_path)
+        print(f"✅ Generated HTML preview: {html_preview}")
+        
